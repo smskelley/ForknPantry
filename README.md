@@ -1,3 +1,8 @@
 ForknPantry
 ===========
-This is Anthony's line
+
+Authors
+-------
+Anthony Banks
+Sean Kelley
+Sean Laue
