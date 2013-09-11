@@ -3,6 +3,6 @@ ForknPantry
 
 Authors
 -------
-Anthony Banks
-Sean Kelley
-Sean Laue
+Anthony Banks  
+Sean Kelley  
+Sean Laue  
