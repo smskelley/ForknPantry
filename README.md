@@ -1,8 +1,9 @@
 ForknPantry
 ===========
 
-Authors
--------
-Anthony Banks  
-Sean Kelley  
-Sean Laue  
+|Authors       |Responsibilities            |
+|--------------|----------------------------|
+|Anthony Banks |Backend Login System        |
+|Sean Kelley   |Backend Food/Recipe System  |
+|Sean Laue     |Front-end                   |
+
