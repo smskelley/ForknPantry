@@ -1,3 +1,2 @@
 default:
-	python manage.py shell
-
+	make -f turtle
