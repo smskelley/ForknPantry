@@ -6,4 +6,5 @@ local_settings.py
 
 #General
 *.swp
+.sass-cache
 .DS_store
