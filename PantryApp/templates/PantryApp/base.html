@@ -1,0 +1,37 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}Fork'n Pantry{% endblock %}</title>
+    <link rel="stylesheet" href="{% static "PantryApp/css/base.css" %}" type="text/css" charset="utf-8">
+    <script language="JavaScript" type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script language="JavaScript" type="text/javascript" src="{% static "PantryApp/js/fnp_forms.js" %}"></script>
+    <script language="JavaScript" type="text/javascript" src="{% static "PantryApp/js/fnp_mobile.js" %}"></script>
+    {% block head %}{% endblock %}
+</head>
+<body style="background-image: url('{% static "PantryApp/img/bg.jpg" %}')">
+
+<header>
+    <h1>Fork'n Pantry</h1>
+    <div id="mobile_menu"><img alt="menu button" src="{% static "PantryApp/img/menu_button.gif" %}"></div>
+</header>
+
+<nav>
+    {% block nav %}
+    <ul>
+        <li class="selected">
+            <a href="#">Login</a>
+        </li><li>
+            <a href="{% url 'Register' %}">Register</a>
+        </li>
+    </ul>
+    {% endblock %}
+</nav>
+<div class="block">
+    {% block content %}
+    <div class="box">
+        <p>Base Template. If you're seeing this, something might be wrong with this site. Please let an admin know.</p>
+    </div>
+    {% endblock %}
+</div>
+</body>

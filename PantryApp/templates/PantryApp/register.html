@@ -1,0 +1,15 @@
+{% extends 'PantryApp/unauth_base.html' %}
+{% block title %}Register for Fork'n Pantry{% endblock %}
+{% block content %}
+    <div class="box">
+        <form action="#" method="post">
+            <p>Email</p>
+            <input id="email" type="text" name="email" placeholder="obama@hotmail.com">
+            <p>Password</p>
+            <input id="pass1" type="password" name="password1" placeholder="prez123">
+            <p>Confirm Password</p>
+            <input id="pass2" type="password" name="password2" placeholder="prez123">
+            <button id="register" type="submit">Register</button>
+        </form>
+    </div>
+{% endblock %}

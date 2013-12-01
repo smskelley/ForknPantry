@@ -1,0 +1,24 @@
+@import constants
+
+.centered
+  display: inline-block
+  vertical-align: middle
+
+.box
+  //display: inline-block
+  width: $colwidth * 4
+  min-width: 480px
+  text-align: left
+  margin: 20px auto 0 auto
+  // basic styling
+  background: rgba(255,255,255,$alpha)
+  border: 1px solid #888
+  -webkit-box-shadow: 3px 3px 7px rgba(50, 50, 50, 0.85)
+  -moz-box-shadow:    3px 3px 7px rgba(50, 50, 50, 0.85)
+  box-shadow:         3px 3px 7px rgba(50, 50, 50, 0.85)
+  font-size: 24px
+  padding: 10px 30px
+  @media #{$break-tablet}
+    width: 100%
+    margin: 0
+

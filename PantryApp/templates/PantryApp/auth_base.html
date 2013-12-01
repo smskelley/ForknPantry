@@ -1,0 +1,14 @@
+{% extends 'PantryApp/base.html' %}
+{% block nav %}
+    <ul>
+        <li class="selected">
+            <a href="{% url 'Pantry' %}">Pantry</a>
+        </li><li>
+            <a href="{% url 'Recipes' %}">Breakfast</a>
+        </li><li>
+            <a href="{% url 'Recipes' %}">Lunch</a>
+        </li><li>
+            <a href="{% url 'Recipes' %}">Dinner</a>
+        </li>
+    </ul>
+{% endblock %}
