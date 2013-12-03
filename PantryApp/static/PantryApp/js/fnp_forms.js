@@ -25,15 +25,17 @@ $(document).ready(function(){
     };
 
     $('#login').click(function(event){
-        event.preventDefault();
         // clean the slate each time
         $('.form_error').remove();
         
         if ($('#pass').val().length < minPassLen) {
-            // notify user the passwords don't match
+            // notify user the passwords don't match, prevent from posting
+            event.preventDefault();
             addFormErrorMsg("Password is too short", '#pass');
         }
         if (!validEmail($('#email').val())) {
+            // notify user the email is invalid, prevent from posting
+            event.preventDefault();
             addFormErrorMsg("Invalid email address", '#email');
         }
         if (!$('.form_error').length) {
@@ -44,16 +46,18 @@ $(document).ready(function(){
     });
 
     $('#register').click(function(event){
-        event.preventDefault();
         // clean the slate each time
         $('.form_error').remove();
         
         var error;
         if (error = invalidPasswords($('#pass1').val(), $('#pass2').val())) {
-            // notify user the passwords don't match
+            // notify user the passwords don't match and prevent from posting
+            event.preventDefault();
             addFormErrorMsg(error, '#pass2');
         }
         if (!validEmail($('#email').val())) {
+            // notify user the email is invalid and prevent from posting
+            event.preventDefault();
             addFormErrorMsg("Invalid email address", '#email');
         }
         if (!$('.form_error').length) {
