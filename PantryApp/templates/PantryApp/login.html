@@ -11,11 +11,21 @@
 {% block title %}Fork'n Pantry Login{% endblock %}
 {% block content %}
     <div class="box">
-        <form action="#" method="post">
+        <form action="{% url 'Login' %}" method="post">
+            {% csrf_token %}
             <p>Email</p>
-            <input id="email" type="text" name="email" placeholder="obama@hotmail.com">
+            <input id="email" type="text" name="email" 
+            {% if email %}
+                value="{{email}}"
+            {% else %}
+                placeholder="obama@hotmail.com"
+            {% endif %}
+            >
             <p>Password</p>
             <input id="pass" type="password" name="password" placeholder="prez123">
+            {% if email %}
+                <p class="form_error">Incorrect Email/Password</p>
+            {% endif %}
             <button id="login" type="submit">Login</button>
         </form>
     </div>
