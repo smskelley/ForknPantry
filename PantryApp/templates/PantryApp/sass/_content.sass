@@ -4,6 +4,9 @@
   display: inline-block
   vertical-align: middle
 
+.block
+  width: 100%
+
 .box
   //display: inline-block
   width: $colwidth * 4
@@ -22,3 +25,30 @@
     width: 100%
     margin: 0
 
+// TODO: Make contents of img_collection horizontally centered.
+.img_collection
+  max-width: 80%
+  margin: 0 auto
+  a
+    color: inherit
+
+.img_frame
+  display: inline-block
+  text-align: left
+  margin: 10px 5px
+  // basic styling
+  background: rgba(255,255,255,$alpha)
+  &:hover
+    background: white
+  border: 1px solid #888
+  -webkit-box-shadow: 3px 3px 7px rgba(50, 50, 50, 0.85)
+  -moz-box-shadow:    3px 3px 7px rgba(50, 50, 50, 0.85)
+  box-shadow:         3px 3px 7px rgba(50, 50, 50, 0.85)
+  font-size: 24px
+  padding: 10px
+  img
+    height: 118px
+    width: 177px
+  @media #{$break-tablet}
+    //width: 100%
+    margin: 10px 5px

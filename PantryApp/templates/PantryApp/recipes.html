@@ -1,4 +1,5 @@
 {% extends 'PantryApp/base.html' %}
+{% load static %}
 {% block nav %}
     <ul>
         <li>
@@ -14,7 +15,17 @@
 {% endblock %}
 {% block title %}Get the Fork'n Pantry{% endblock %}
 {% block content %}
-    <div class="box">
-        <p>This template is not yet finished.</p>
+    <div class="img_collection">
+        {% for recipe in recipes %}
+        <a href="http://{{recipe.link}}">
+            <div class="img_frame">
+                {% if recipe.photo_exists %}
+                    <img src="{% static "PantryApp/img/r/"|add:recipe.id|add:".jpg" %}">
+                {% else %}
+                    <img src="{% static "PantryApp/img/r/default.jpg" %}">
+                {% endif %}
+                <p>{{recipe.name}}</p>
+        </div></a>
+        {% endfor %}
     </div>
 {% endblock %}
