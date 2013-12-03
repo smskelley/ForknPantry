@@ -14,7 +14,13 @@
         <form action="{% url "Register" %}" method="post">
             {% csrf_token %}
             <p>Email</p>
-            <input id="email" type="text" name="email" placeholder="obama@hotmail.com">
+            <input id="email" type="text" name="email"
+            {% if email %}
+                value="{{email}}">
+                <p class="form_error">Username already taken.</p>
+            {% else %}
+                placeholder="obama@hotmail.com">
+            {% endif %}
             <p>Password</p>
             <input id="pass1" type="password" name="password1" placeholder="prez123">
             <p>Confirm Password</p>
