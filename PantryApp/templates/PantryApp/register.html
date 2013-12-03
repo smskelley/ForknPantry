@@ -11,7 +11,8 @@
 {% endblock %}
 {% block content %}
     <div class="box">
-        <form action="#" method="post">
+        <form action="{% url "Register" %}" method="post">
+            {% csrf_token %}
             <p>Email</p>
             <input id="email" type="text" name="email" placeholder="obama@hotmail.com">
             <p>Password</p>
