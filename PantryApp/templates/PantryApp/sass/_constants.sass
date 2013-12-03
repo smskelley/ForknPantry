@@ -1,0 +1,17 @@
+$alpha: 0.75
+$cols: 12
+$colwidth: 100.0% / 12.0
+$light-blue: rgb(90,180,250)
+$red: #F44
+
+// header/nav
+$header-height: 50px
+
+@function ems($px)
+  @return $px / 16.0 + "em"
+
+// breakpoints for media queries, these are approximate values
+// will need to mess with them to get them right.
+$break-phone: "only screen and (max-width : 320px)"
+$break-tablet: "only screen and (max-width :#{ems(800)})"
+$break-desktop: "only screen and (max-width : 1024)"

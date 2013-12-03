@@ -1,0 +1,73 @@
+@import constants
+
+
+*
+  padding: 0
+  margin: 0
+  box-sizing: border-box
+
+body
+  //This is being specified in html because django looks up the
+  //static file dynamically.
+  //background-image: url('../static/img/bg.jpg')
+  background-position: top
+  font-family: sans-serif
+  font-weight: normal
+  width: 100%
+  height: 100%
+
+h1
+  font-weight: normal
+  font-size: 43px
+
+header
+  width: 100%
+  height: $header-height
+  padding-left: 10px
+  color: white
+  background: rgba(0,0,0,$alpha)
+  border-bottom: 2px solid $light-blue
+  font-family: serif
+
+#mobile_menu
+  $img-height: 26px
+  $img-width: 31px
+  display: none
+  @media #{$break-tablet}
+    display: inline-block
+  float: right
+  cursor: pointer
+  margin-top: -($header-height / 2.0 - $img-height / 2.0 + $img-height)
+  margin-right: $img-width / 2.0
+  img
+    height: $img-height
+    width: $img-width
+
+nav
+  width: 100%
+  //height: 40px
+  @media #{$break-tablet}
+    display: none
+  line-height: 40px
+  font-size: 24px
+  color: white
+  background: rgba(80,80,80,$alpha)
+
+  a
+    color: white
+    text-decoration: none
+
+  ul
+    height: inherit
+  li
+    display: inline-block
+    @media #{$break-tablet}
+      display: block
+    height: inherit
+    padding: 0px 40px 0 40px
+    &:hover
+      background: $light-blue * 1.1
+
+  .selected
+    background: $light-blue
+

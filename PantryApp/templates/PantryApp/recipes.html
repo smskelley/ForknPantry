@@ -1,0 +1,33 @@
+{% extends 'PantryApp/base.html' %}
+{% load static %}
+{% block nav %}
+    <ul>
+        <li>
+            <a href="{% url 'Pantry' %}">Pantry</a>
+        </li><li class="selected">
+            <a href="{% url 'Recipes' %}">Breakfast</a>
+        </li><li>
+            <a href="{% url 'Recipes' %}">Lunch</a>
+        </li><li>
+            <a href="{% url 'Recipes' %}">Dinner</a>
+        </li>
+    </ul>
+{% endblock %}
+{% block title %}Get the Fork'n Pantry{% endblock %}
+{% block content %}
+    <div class="img_collection">
+        {% for recipe in recipes %}
+        <a href="http://{{recipe.link}}">
+            <div class="img_frame">
+                {% if recipe.photo_exists %}
+                    {% with recipe.id|stringformat:"s" as recipe_id %}
+                        <img src="{% static "PantryApp/img/r/"|add:recipe_id|add:".jpg" %}">
+                    {% endwith %}
+                {% else %}
+                    <img src="{% static "PantryApp/img/r/default.jpg" %}">
+                {% endif %}
+                <p>{{recipe.name}}</p>
+        </div></a>
+        {% endfor %}
+    </div>
+{% endblock %}

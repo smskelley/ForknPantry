@@ -1,0 +1,31 @@
+{% extends 'PantryApp/base.html' %}
+{% block title %}Register for Fork'n Pantry{% endblock %}
+{% block nav %}
+<ul>
+    <li>
+        <a href="{% url 'Login' %}">Login</a>
+    </li><li class="selected">
+        <a href="{% url 'Register' %}">Register</a>
+    </li>
+</ul>
+{% endblock %}
+{% block content %}
+    <div class="box">
+        <form action="{% url "Register" %}" method="post">
+            {% csrf_token %}
+            <p>Email</p>
+            <input id="email" type="text" name="email"
+            {% if email %}
+                value="{{email}}">
+                <p class="form_error">Username already taken.</p>
+            {% else %}
+                placeholder="obama@hotmail.com">
+            {% endif %}
+            <p>Password</p>
+            <input id="pass1" type="password" name="password1" placeholder="prez123">
+            <p>Confirm Password</p>
+            <input id="pass2" type="password" name="password2" placeholder="prez123">
+            <button id="register" type="submit">Register</button>
+        </form>
+    </div>
+{% endblock %}

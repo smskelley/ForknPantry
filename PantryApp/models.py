@@ -3,12 +3,14 @@ from django.db import models
 # Ingredient Model
 class Ingredient(models.Model):
         name = models.CharField(max_length=200)
-        class Meta:
-                app_label = 'PantryApp'
+        def __unicode__(self):
+            return self.name
 
 # Category Model
 class Category(models.Model):
         name = models.CharField(max_length=200)
+        def __unicode__(self):
+            return self.name
 
 # User Model
 class User(models.Model):
@@ -16,8 +18,8 @@ class User(models.Model):
 	password_hash = models.CharField(max_length=200)
 	session_id = models.IntegerField()
 	ingredients = models.ManyToManyField(Ingredient)
-	class Meta:
-		app_label = 'PantryApp'
+        def __unicode__(self):
+            return self.email
 
 # Recipe Model
 class Recipe(models.Model):
@@ -26,3 +28,5 @@ class Recipe(models.Model):
 	photo_exists = models.BooleanField()
 	category = models.ForeignKey(Category)
 	ingredients = models.ManyToManyField(Ingredient)
+        def __unicode__(self):
+            return self.name
