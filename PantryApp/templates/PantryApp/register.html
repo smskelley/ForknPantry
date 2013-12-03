@@ -1,5 +1,14 @@
-{% extends 'PantryApp/unauth_base.html' %}
+{% extends 'PantryApp/base.html' %}
 {% block title %}Register for Fork'n Pantry{% endblock %}
+{% block nav %}
+<ul>
+    <li>
+        <a href="{% url 'Login' %}">Login</a>
+    </li><li class="selected">
+        <a href="{% url 'Register' %}">Register</a>
+    </li>
+</ul>
+{% endblock %}
 {% block content %}
     <div class="box">
         <form action="#" method="post">

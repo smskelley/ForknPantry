@@ -1,4 +1,13 @@
-{% extends 'PantryApp/unauth_base.html' %}
+{% extends 'PantryApp/base.html' %}
+{% block nav %}
+<ul>
+    <li class="selected">
+        <a href="{% url 'Login' %}">Login</a>
+    </li><li>
+        <a href="{% url 'Register' %}">Register</a>
+    </li>
+</ul>
+{% endblock %}
 {% block title %}Fork'n Pantry Login{% endblock %}
 {% block content %}
     <div class="box">
