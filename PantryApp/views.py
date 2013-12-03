@@ -15,7 +15,7 @@ class Login(View):
         return render(request, 'PantryApp/login.html')
     def post(self, request):
         # Rendering example data
-        return render(request, 'PantryApp/login.html', { 'user': 'user@mail.com' })
+        return render(request, 'PantryApp/login.html', { 'email': 'user@mail.com' })
 
 class Pantry(View):
     def get(self, request):
