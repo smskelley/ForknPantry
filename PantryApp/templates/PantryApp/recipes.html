@@ -20,7 +20,9 @@
         <a href="http://{{recipe.link}}">
             <div class="img_frame">
                 {% if recipe.photo_exists %}
-                    <img src="{% static "PantryApp/img/r/"|add:recipe.id|add:".jpg" %}">
+                    {% with recipe.id|stringformat:"s" as recipe_id %}
+                        <img src="{% static "PantryApp/img/r/"|add:recipe_id|add:".jpg" %}">
+                    {% endwith %}
                 {% else %}
                     <img src="{% static "PantryApp/img/r/default.jpg" %}">
                 {% endif %}
