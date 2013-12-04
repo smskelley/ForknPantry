@@ -28,6 +28,9 @@
                 {% endif %}
                 <p>{{recipe.name}}</p>
         </div></a>
+        {% empty %}
+        <div class="box"><p>Sorry, there are no recipes found that match your
+            selection of ingredients</p></div>
         {% endfor %}
     </div>
 {% endblock %}
