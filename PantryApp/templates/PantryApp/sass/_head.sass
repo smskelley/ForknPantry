@@ -7,10 +7,12 @@
   box-sizing: border-box
 
 body
-  //This is being specified in html because django looks up the
-  //static file dynamically.
-  //background-image: url('../static/img/bg.jpg')
-  background-position: top
+  background: url('../img/bg.jpg') no-repeat center center fixed
+  -webkit-background-size: cover
+  -moz-background-size: cover
+  -o-background-size: cover
+  background-size: cover
+
   font-family: sans-serif
   font-weight: normal
   width: 100%
