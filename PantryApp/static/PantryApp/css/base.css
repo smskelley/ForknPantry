@@ -3,8 +3,13 @@
   margin: 0;
   box-sizing: border-box; }
 
+html {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; }
+
 body {
-  background-position: top;
   font-family: sans-serif;
   font-weight: normal;
   width: 100%;
