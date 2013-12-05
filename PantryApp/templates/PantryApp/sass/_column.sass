@@ -1,0 +1,38 @@
+@import constants
+
+.section
+  clear: both
+  padding: 0px
+  margin: 0px
+
+.group:before,
+.group:after
+  content: ""
+  display: table
+.group:after
+  clear: both
+
+.col
+  display: block
+  float: left
+  margin: 1% 0 1% $gutter
+  @media #{$break-tablet}
+    margin: 1% 0 1% 0%
+
+.col:first-child 
+  margin-left: 0 
+
+
+/*  REMOVE MARGINS AS ALL GO FULL WIDTH AT 480 PIXELS */
+
+
+@function colw($span, $total)
+  @return 100% - ($cols - $span) * ( ($gutter + 100.0) / $cols )
+
+// create the spans
+@for $i from 1 through $cols
+  .span-#{$i}-of-#{$cols}
+    width: colw($i, $cols)
+    @media #{$break-tablet}
+      width: 100%
+
