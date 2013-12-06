@@ -9,10 +9,9 @@
 
 .box
   //display: inline-block
-  width: $colwidth * 4
-  min-width: 480px
+  width: ems(460)
   text-align: left
-  margin: 20px auto 0 auto
+  margin: 5% auto 0 auto
   // basic styling
   background: rgba(255,255,255,$alpha)
   border: 1px solid #888
@@ -22,6 +21,9 @@
   font-size: 24px
   padding: 10px 30px
   @media #{$break-tablet}
+    width: 90%
+    //margin: 0
+  @media #{$break-phone}
     width: 100%
     margin: 0
 

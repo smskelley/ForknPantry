@@ -11,7 +11,7 @@ body {
   background: url("../img/bg.jpg") no-repeat center center fixed;
   background-repeat: none;
   background-position: center center;
-  background-attachment: scroll;
+  background-attachment: fixed;
   background-size: cover;
   font-family: sans-serif;
   font-weight: normal;
@@ -24,20 +24,22 @@ h1 {
 
 header {
   width: 100%;
-  height: 50px;
   padding-left: 10px;
+  display: inline-block;
   color: white;
   background: rgba(0, 0, 0, 0.75);
   border-bottom: 2px solid #5ab4fa;
   font-family: serif; }
+  header h1 {
+    display: inline-block; }
 
 #mobile_menu {
   display: none;
   float: right;
   cursor: pointer;
-  margin-top: -38px;
+  margin-top: 8.5px;
   margin-right: 15.5px; }
-  @media only screen and (max-width: 790px) {
+  @media only screen and (max-width: 56.25em) {
     #mobile_menu {
       display: inline-block; } }
   #mobile_menu img {
@@ -50,7 +52,7 @@ nav {
   font-size: 24px;
   color: white;
   background: rgba(80, 80, 80, 0.75); }
-  @media only screen and (max-width: 790px) {
+  @media only screen and (max-width: 56.25em) {
     nav {
       display: none; } }
   nav a {
@@ -62,7 +64,7 @@ nav {
     display: inline-block;
     height: inherit;
     padding: 0px 40px 0 40px; }
-    @media only screen and (max-width: 790px) {
+    @media only screen and (max-width: 56.25em) {
       nav li {
         display: block; } }
     nav li:hover {
@@ -78,10 +80,9 @@ nav {
   width: 100%; }
 
 .box {
-  width: 33.33333%;
-  min-width: 480px;
+  width: 28.75em;
   text-align: left;
-  margin: 20px auto 0 auto;
+  margin: 5% auto 0 auto;
   background: rgba(255, 255, 255, 0.75);
   border: 1px solid #888888;
   -webkit-box-shadow: 3px 3px 7px rgba(50, 50, 50, 0.85);
@@ -89,7 +90,10 @@ nav {
   box-shadow: 3px 3px 7px rgba(50, 50, 50, 0.85);
   font-size: 24px;
   padding: 10px 30px; }
-  @media only screen and (max-width: 790px) {
+  @media only screen and (max-width: 56.25em) {
+    .box {
+      width: 90%; } }
+  @media only screen and (max-width: 30em) {
     .box {
       width: 100%;
       margin: 0; } }
@@ -116,7 +120,7 @@ nav {
   .img_frame img {
     height: 118px;
     width: 177px; }
-  @media only screen and (max-width: 790px) {
+  @media only screen and (max-width: 56.25em) {
     .img_frame {
       margin: 10px 5px; } }
 
@@ -185,7 +189,7 @@ button {
   display: block;
   float: left;
   margin: 1% 0 1% 1.6%; }
-  @media only screen and (max-width: 790px) {
+  @media only screen and (max-width: 56.25em) {
     .col {
       margin: 1% 0 1% 0%; } }
 
@@ -195,72 +199,72 @@ button {
 /*  REMOVE MARGINS AS ALL GO FULL WIDTH AT 480 PIXELS */
 .span-1-of-12 {
   width: 6.86667%; }
-  @media only screen and (max-width: 790px) {
+  @media only screen and (max-width: 56.25em) {
     .span-1-of-12 {
       width: 100%; } }
 
 .span-2-of-12 {
   width: 15.33333%; }
-  @media only screen and (max-width: 790px) {
+  @media only screen and (max-width: 56.25em) {
     .span-2-of-12 {
       width: 100%; } }
 
 .span-3-of-12 {
   width: 23.8%; }
-  @media only screen and (max-width: 790px) {
+  @media only screen and (max-width: 56.25em) {
     .span-3-of-12 {
       width: 100%; } }
 
 .span-4-of-12 {
   width: 32.26667%; }
-  @media only screen and (max-width: 790px) {
+  @media only screen and (max-width: 56.25em) {
     .span-4-of-12 {
       width: 100%; } }
 
 .span-5-of-12 {
   width: 40.73333%; }
-  @media only screen and (max-width: 790px) {
+  @media only screen and (max-width: 56.25em) {
     .span-5-of-12 {
       width: 100%; } }
 
 .span-6-of-12 {
   width: 49.2%; }
-  @media only screen and (max-width: 790px) {
+  @media only screen and (max-width: 56.25em) {
     .span-6-of-12 {
       width: 100%; } }
 
 .span-7-of-12 {
   width: 57.66667%; }
-  @media only screen and (max-width: 790px) {
+  @media only screen and (max-width: 56.25em) {
     .span-7-of-12 {
       width: 100%; } }
 
 .span-8-of-12 {
   width: 66.13333%; }
-  @media only screen and (max-width: 790px) {
+  @media only screen and (max-width: 56.25em) {
     .span-8-of-12 {
       width: 100%; } }
 
 .span-9-of-12 {
   width: 74.6%; }
-  @media only screen and (max-width: 790px) {
+  @media only screen and (max-width: 56.25em) {
     .span-9-of-12 {
       width: 100%; } }
 
 .span-10-of-12 {
   width: 83.06667%; }
-  @media only screen and (max-width: 790px) {
+  @media only screen and (max-width: 56.25em) {
     .span-10-of-12 {
       width: 100%; } }
 
 .span-11-of-12 {
   width: 91.53333%; }
-  @media only screen and (max-width: 790px) {
+  @media only screen and (max-width: 56.25em) {
     .span-11-of-12 {
       width: 100%; } }
 
 .span-12-of-12 {
   width: 100%; }
-  @media only screen and (max-width: 790px) {
+  @media only screen and (max-width: 56.25em) {
     .span-12-of-12 {
       width: 100%; } }

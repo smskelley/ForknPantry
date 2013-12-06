@@ -3,6 +3,7 @@
 <html>
 <head>
     <title>{% block title %}Fork'n Pantry{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
     <link rel="stylesheet" href="{% static "PantryApp/css/base.css" %}" type="text/css" charset="utf-8">
     <script language="JavaScript" type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script language="JavaScript" type="text/javascript" src="{% static "PantryApp/js/fnp_forms.js" %}"></script>
@@ -11,7 +12,7 @@
 </head>
 <body>
 
-<header>
+<header class="group">
     <h1>Fork'n Pantry</h1>
     <div id="mobile_menu"><img alt="menu button" src="{% static "PantryApp/img/menu_button.gif" %}"></div>
 </header>

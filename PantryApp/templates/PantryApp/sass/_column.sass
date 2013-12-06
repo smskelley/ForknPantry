@@ -26,9 +26,6 @@
 /*  REMOVE MARGINS AS ALL GO FULL WIDTH AT 480 PIXELS */
 
 
-@function colw($span, $total)
-  @return 100% - ($cols - $span) * ( ($gutter + 100.0) / $cols )
-
 // create the spans
 @for $i from 1 through $cols
   .span-#{$i}-of-#{$cols}

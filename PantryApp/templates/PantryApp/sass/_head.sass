@@ -14,7 +14,7 @@ body
   background: url('../img/bg.jpg') no-repeat center center fixed
   background-repeat: none
   background-position: center center
-  background-attachment: scroll
+  background-attachment: fixed
   background-size: cover
 
   font-family: sans-serif
@@ -28,12 +28,15 @@ h1
 
 header
   width: 100%
-  height: $header-height
+  //height: $header-height
   padding-left: 10px
+  display: inline-block
   color: white
   background: rgba(0,0,0,$alpha)
   border-bottom: 2px solid $light-blue
   font-family: serif
+  h1
+    display: inline-block
 
 #mobile_menu
   $img-height: 26px
@@ -43,7 +46,7 @@ header
     display: inline-block
   float: right
   cursor: pointer
-  margin-top: -($header-height / 2.0 - $img-height / 2.0 + $img-height)
+  margin-top: (43.0 / 2.0 - $img-height / 2.0)
   margin-right: $img-width / 2.0
   img
     height: $img-height
