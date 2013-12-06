@@ -1,2 +1,2 @@
 default:
-	make -f turtle
+	python manage.py runserver
