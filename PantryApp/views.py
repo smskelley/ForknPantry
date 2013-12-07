@@ -67,10 +67,11 @@ class Pantry(View):
                 ]})
 
 class Recipes(View):
-    def get(self, request):
+    def get(self, request, category):
         # Rendering example data
         return render(request, 'PantryApp/recipes.html',
-                {"recipes": [
+                {"category": category,
+                 "recipes": [
                     {'id': 1, 'name': 'Chili', 'link': 'www.food.com', 
                         'photo_exists': False },
                     {'id': 2, 'name': 'Chili', 'link': 'www.food.com', 

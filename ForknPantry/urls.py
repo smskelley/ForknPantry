@@ -10,7 +10,7 @@ urlpatterns = patterns('',
     url(r'^pantry/$', Pantry.as_view(), name='Pantry'),
     # recipes url will need to be updated to accept a type.
     # e.g. recipes/breakfast, recipes/lunch, etc
-    url(r'^recipes/$', Recipes.as_view(), name='Recipes'),
+    url(r'^recipes/(?P<category>\w+)$', Recipes.as_view(), name='Recipes'),
 
     url(r'^admin/', include(admin.site.urls)),
 )
