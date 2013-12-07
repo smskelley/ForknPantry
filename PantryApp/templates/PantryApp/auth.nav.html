@@ -1,0 +1,22 @@
+    <ul>
+        {% if select == 'pantry' %}
+            <li class="selected"><a href="{% url 'Pantry'%}">Pantry</a>
+        {% else %}
+            <li><a href="{% url 'Pantry'%}">Pantry</a>
+        {% endif %}
+        {% if select == 'breakfast' %}
+            <li class="selected"><a href="{% url 'Recipes' category='breakfast'%}">Breakfast</a>
+        {% else %}
+            <li><a href="{% url 'Recipes' category='breakfast'%}">Breakfast</a>
+        {% endif %}
+        {% if select == 'lunch' %}
+            <li class="selected"><a href="{% url 'Recipes' category='lunch'%}">Lunch</a>
+        {% else %}
+            <li><a href="{% url 'Recipes' category='lunch'%}">Lunch</a>
+        {% endif %}
+        {% if select == 'dinner'|lower %}
+            <li class="selected"><a href="{% url 'Recipes' category='dinner'%}">Dinner</a>
+        {% else %}
+            <li><a href="{% url 'Recipes' category='dinner'%}">Dinner</a>
+        {% endif %}
+    </ul>

@@ -1,12 +1,7 @@
 {% extends 'PantryApp/base.html' %}
 {% load static %}
 {% block nav %}
-    <ul>
-        <li><a href="{% url 'Pantry' %}">Pantry</a>
-        <li class="selected"><a href="{% url 'Recipes' %}">Breakfast</a>
-        <li><a href="{% url 'Recipes' %}">Lunch</a>
-        <li><a href="{% url 'Recipes' %}">Dinner</a>
-    </ul>
+    {% include 'PantryApp/auth.nav.html' with select=category%}
 {% endblock %}
 {% block title %}Get the Fork'n Pantry{% endblock %}
 {% block content %}

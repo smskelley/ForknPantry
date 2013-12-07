@@ -1,0 +1,12 @@
+<ul>
+    {% if select == 'login' %}
+        <li class="selected"><a href="{% url 'Login'%}">Login</a>
+    {% else %}
+        <li><a href="{% url 'Login'%}">Login</a>
+    {% endif %}
+    {% if select == 'register' %}
+        <li class="selected"><a href="{% url 'Register'%}">Register</a>
+    {% else %}
+        <li><a href="{% url 'Register'%}">Register</a>
+    {% endif %}
+</ul>

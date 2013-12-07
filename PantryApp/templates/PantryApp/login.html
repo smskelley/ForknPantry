@@ -1,8 +1,7 @@
 {% extends 'PantryApp/base.html' %}
 {% block nav %}
 <ul>
-    <li class="selected"><a href="{% url 'Login' %}">Login</a>
-    <li><a href="{% url 'Register' %}">Register</a>
+    {% include 'PantryApp/unauth.nav.html' with select='login' %}
 </ul>
 {% endblock %}
 {% block title %}Fork'n Pantry Login{% endblock %}
