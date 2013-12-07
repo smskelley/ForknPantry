@@ -108,6 +108,18 @@ nav {
       width: 100%;
       margin: 0; } }
 
+.narrow {
+  width: 15.625em; }
+  @media only screen and (max-width: 56.25em) {
+    .narrow {
+      width: 90%;
+      max-width: 15.625em; } }
+  @media only screen and (max-width: 30em) {
+    .narrow {
+      width: 100%;
+      margin: 0;
+      max-width: 100%; } }
+
 .img_collection {
   max-width: 80%;
   margin: 0 auto; }

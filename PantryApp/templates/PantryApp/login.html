@@ -6,7 +6,7 @@
 {% endblock %}
 {% block title %}Fork'n Pantry Login{% endblock %}
 {% block content %}
-    <div class="box">
+    <div class="box narrow">
         <form action="{% url 'Login' %}" method="post">
             {% csrf_token %}
             <p>Email</p>

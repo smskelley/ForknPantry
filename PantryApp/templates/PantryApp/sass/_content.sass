@@ -30,6 +30,16 @@
     width: 100%
     margin: 0
 
+.narrow
+  width: ems(250)
+  @media #{$break-tablet}
+    width: 90%
+    max-width: ems(250)
+  @media #{$break-phone}
+    width: 100%
+    margin: 0
+    max-width: 100%
+
 // TODO: Make contents of img_collection horizontally centered.
 .img_collection
   max-width: 80%
