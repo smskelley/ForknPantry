@@ -1,8 +1,11 @@
 @import constants
 
 .centered
-  display: inline-block
-  vertical-align: middle
+  margin-left: auto
+  margin-right: auto
+
+.centered_text
+  text-align: center
 
 .block
   width: 100%
@@ -18,8 +21,8 @@
   -webkit-box-shadow: 3px 3px 7px rgba(50, 50, 50, 0.85)
   -moz-box-shadow:    3px 3px 7px rgba(50, 50, 50, 0.85)
   box-shadow:         3px 3px 7px rgba(50, 50, 50, 0.85)
-  font-size: 24px
-  padding: 10px 30px
+  font-size: ems(24)
+  padding: ems(30) ems(30)
   @media #{$break-tablet}
     width: 90%
     //margin: 0
@@ -37,7 +40,7 @@
 .img_frame
   display: inline-block
   text-align: left
-  margin: 10px 5px
+  margin: ems(10) ems(5)
   // basic styling
   background: rgba(255,255,255,$alpha)
   &:hover
@@ -46,11 +49,11 @@
   -webkit-box-shadow: 3px 3px 7px rgba(50, 50, 50, 0.85)
   -moz-box-shadow:    3px 3px 7px rgba(50, 50, 50, 0.85)
   box-shadow:         3px 3px 7px rgba(50, 50, 50, 0.85)
-  font-size: 24px
-  padding: 10px
+  font-size: ems(24)
+  padding: ems(10)
   img
     height: 118px
     width: 177px
   @media #{$break-tablet}
     //width: 100%
-    margin: 10px 5px
+    margin: ems(10) ems(10)

@@ -2,11 +2,8 @@
 {% block title %}Register for Fork'n Pantry{% endblock %}
 {% block nav %}
 <ul>
-    <li>
-        <a href="{% url 'Login' %}">Login</a>
-    </li><li class="selected">
-        <a href="{% url 'Register' %}">Register</a>
-    </li>
+    <li><a href="{% url 'Login' %}">Login</a>
+    <li class="selected"><a href="{% url 'Register' %}">Register</a>
 </ul>
 {% endblock %}
 {% block content %}
@@ -19,12 +16,12 @@
                 value="{{email}}">
                 <p class="form_error">Username already taken.</p>
             {% else %}
-                placeholder="obama@hotmail.com">
+                placeholder="Enter your email">
             {% endif %}
             <p>Password</p>
-            <input id="pass1" type="password" name="password1" placeholder="prez123">
+            <input id="pass1" type="password" name="password1" placeholder="Enter your password">
             <p>Confirm Password</p>
-            <input id="pass2" type="password" name="password2" placeholder="prez123">
+            <input id="pass2" type="password" name="password2" placeholder="Enter your password">
             <button id="register" type="submit">Register</button>
         </form>
     </div>

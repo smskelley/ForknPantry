@@ -1,11 +1,8 @@
 {% extends 'PantryApp/base.html' %}
 {% block nav %}
 <ul>
-    <li class="selected">
-        <a href="{% url 'Login' %}">Login</a>
-    </li><li>
-        <a href="{% url 'Register' %}">Register</a>
-    </li>
+    <li class="selected"><a href="{% url 'Login' %}">Login</a>
+    <li><a href="{% url 'Register' %}">Register</a>
 </ul>
 {% endblock %}
 {% block title %}Fork'n Pantry Login{% endblock %}
@@ -18,15 +15,16 @@
             {% if email %}
                 value="{{email}}"
             {% else %}
-                placeholder="obama@hotmail.com"
+                placeholder="Enter your Email"
             {% endif %}
             >
             <p>Password</p>
-            <input id="pass" type="password" name="password" placeholder="prez123">
+            <input id="pass" type="password" name="password" placeholder="Enter your Password">
             {% if email %}
                 <p class="form_error">Incorrect Email/Password</p>
             {% endif %}
             <button id="login" type="submit">Login</button>
         </form>
+    </div>
     </div>
 {% endblock %}

@@ -11,12 +11,11 @@ html
   width: 100%
 
 body
-  background: url('../img/bg.jpg') no-repeat center center fixed
+  background: url('../img/bg.jpg')
   background-repeat: none
   background-position: center center
   background-attachment: fixed
   background-size: cover
-
   font-family: sans-serif
   font-weight: normal
   width: 100%
@@ -28,6 +27,7 @@ h1
 
 header
   width: 100%
+  box-sizing: border-box
   //height: $header-height
   padding-left: 10px
   display: inline-block
@@ -68,15 +68,21 @@ nav
 
   ul
     height: inherit
-  li
-    display: inline-block
-    @media #{$break-tablet}
-      display: block
-    height: inherit
-    padding: 0px 40px 0 40px
-    &:hover
-      background: $light-blue * 1.1
+    .selected
+      background: $light-blue
+    li
+      display: inline-block
+      @media #{$break-tablet}
+        display: block
+      height: inherit
+      &:hover
+        background: $light-blue * 1.1
+    a
+      // force full width to be clickable
+      padding: 0 40px 0 40px
+      width: 100%
+      max-height: 100%
+      @media #{$break-tablet}
+        padding-right: 100%
 
-  .selected
-    background: $light-blue
 

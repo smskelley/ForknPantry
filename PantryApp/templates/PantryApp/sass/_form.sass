@@ -13,10 +13,27 @@
   -moz-box-shadow:    3px 3px 7px rgba(50, 50, 50, 0.85)
   box-shadow:         3px 3px 7px rgba(50, 50, 50, 0.85)
 
+$radius: 15px
+.round_top
+  -webkit-border-top-left-radius: $radius
+  -webkit-border-top-right-radius: $radius
+  -moz-border-radius-topleft: $radius
+  -moz-border-radius-topright: $radius
+  border-top-left-radius: $radius
+  border-top-right-radius: $radius
+
+.round_bottom
+  -webkit-border-bottom-right-radius: $radius
+  -webkit-border-bottom-left-radius: $radius
+  -moz-border-radius-bottomright: $radius
+  -moz-border-radius-bottomleft: $radius
+  border-bottom-right-radius: $radius
+  border-bottom-left-radius: $radius
+
 input[type="text"], input[type="password"]
   font-size: 24px
   width: 100%
-  margin: 0 0 15px 0
+  margin: 0 auto 24px auto
   padding: 5px
 
 input[type="checkbox"]
@@ -32,12 +49,10 @@ input[type="checkbox"]
 label
   font-size: 24px
   display: block
-  padding-left: 15px
-  text-indent: -15px
 
 button
-  width: 100%
-  margin: 10% 0
+  width: 80%
+  margin: 5% 10% 0 10%
   font-size: 24px
   line-height: 48px
   text-align: center

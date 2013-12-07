@@ -1,15 +1,10 @@
 {% extends 'PantryApp/base.html' %}
 {% block nav %}
     <ul>
-        <li class="selected">
-            <a href="{% url 'Pantry' %}">Pantry</a>
-        </li><li>
-            <a href="{% url 'Recipes' %}">Breakfast</a>
-        </li><li>
-            <a href="{% url 'Recipes' %}">Lunch</a>
-        </li><li>
-            <a href="{% url 'Recipes' %}">Dinner</a>
-        </li>
+        <li class="selected"><a href="{% url 'Pantry' %}">Pantry</a>
+        <li><a href="{% url 'Recipes' %}">Breakfast</a>
+        <li><a href="{% url 'Recipes' %}">Lunch</a>
+        <li><a href="{% url 'Recipes' %}">Dinner</a>
     </ul>
 {% endblock %}
 {% block title %}Get the Fork'n Pantry{% endblock %}
@@ -28,6 +23,5 @@
         {% endfor %}
             <button type="submit">Save</button>
         </form>
-        <p>This template is not yet finished.</p>
     </div>
 {% endblock %}

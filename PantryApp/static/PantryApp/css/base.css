@@ -8,7 +8,7 @@ html {
   width: 100%; }
 
 body {
-  background: url("../img/bg.jpg") no-repeat center center fixed;
+  background: url("../img/bg.jpg");
   background-repeat: none;
   background-position: center center;
   background-attachment: fixed;
@@ -24,6 +24,7 @@ h1 {
 
 header {
   width: 100%;
+  box-sizing: border-box;
   padding-left: 10px;
   display: inline-block;
   color: white;
@@ -60,21 +61,30 @@ nav {
     text-decoration: none; }
   nav ul {
     height: inherit; }
-  nav li {
-    display: inline-block;
-    height: inherit;
-    padding: 0px 40px 0 40px; }
-    @media only screen and (max-width: 56.25em) {
-      nav li {
-        display: block; } }
-    nav li:hover {
-      background: #63c6ff; }
-  nav .selected {
-    background: #5ab4fa; }
+    nav ul .selected {
+      background: #5ab4fa; }
+    nav ul li {
+      display: inline-block;
+      height: inherit; }
+      @media only screen and (max-width: 56.25em) {
+        nav ul li {
+          display: block; } }
+      nav ul li:hover {
+        background: #63c6ff; }
+    nav ul a {
+      padding: 0 40px 0 40px;
+      width: 100%;
+      max-height: 100%; }
+      @media only screen and (max-width: 56.25em) {
+        nav ul a {
+          padding-right: 100%; } }
 
 .centered {
-  display: inline-block;
-  vertical-align: middle; }
+  margin-left: auto;
+  margin-right: auto; }
+
+.centered_text {
+  text-align: center; }
 
 .block {
   width: 100%; }
@@ -88,8 +98,8 @@ nav {
   -webkit-box-shadow: 3px 3px 7px rgba(50, 50, 50, 0.85);
   -moz-box-shadow: 3px 3px 7px rgba(50, 50, 50, 0.85);
   box-shadow: 3px 3px 7px rgba(50, 50, 50, 0.85);
-  font-size: 24px;
-  padding: 10px 30px; }
+  font-size: 1.5em;
+  padding: 1.875em 1.875em; }
   @media only screen and (max-width: 56.25em) {
     .box {
       width: 90%; } }
@@ -107,14 +117,14 @@ nav {
 .img_frame {
   display: inline-block;
   text-align: left;
-  margin: 10px 5px;
+  margin: 0.625em 0.3125em;
   background: rgba(255, 255, 255, 0.75);
   border: 1px solid #888888;
   -webkit-box-shadow: 3px 3px 7px rgba(50, 50, 50, 0.85);
   -moz-box-shadow: 3px 3px 7px rgba(50, 50, 50, 0.85);
   box-shadow: 3px 3px 7px rgba(50, 50, 50, 0.85);
-  font-size: 24px;
-  padding: 10px; }
+  font-size: 1.5em;
+  padding: 0.625em; }
   .img_frame:hover {
     background: white; }
   .img_frame img {
@@ -122,7 +132,7 @@ nav {
     width: 177px; }
   @media only screen and (max-width: 56.25em) {
     .img_frame {
-      margin: 10px 5px; } }
+      margin: 0.625em 0.625em; } }
 
 .form_error {
   width: 100%;
@@ -137,10 +147,26 @@ nav {
   -moz-box-shadow: 3px 3px 7px rgba(50, 50, 50, 0.85);
   box-shadow: 3px 3px 7px rgba(50, 50, 50, 0.85); }
 
+.round_top {
+  -webkit-border-top-left-radius: 15px;
+  -webkit-border-top-right-radius: 15px;
+  -moz-border-radius-topleft: 15px;
+  -moz-border-radius-topright: 15px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px; }
+
+.round_bottom {
+  -webkit-border-bottom-right-radius: 15px;
+  -webkit-border-bottom-left-radius: 15px;
+  -moz-border-radius-bottomright: 15px;
+  -moz-border-radius-bottomleft: 15px;
+  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 15px; }
+
 input[type="text"], input[type="password"] {
   font-size: 24px;
   width: 100%;
-  margin: 0 0 15px 0;
+  margin: 0 auto 24px auto;
   padding: 5px; }
 
 input[type="checkbox"] {
@@ -155,13 +181,11 @@ input[type="checkbox"] {
 
 label {
   font-size: 24px;
-  display: block;
-  padding-left: 15px;
-  text-indent: -15px; }
+  display: block; }
 
 button {
-  width: 100%;
-  margin: 10% 0;
+  width: 80%;
+  margin: 5% 10% 0 10%;
   font-size: 24px;
   line-height: 48px;
   text-align: center;
@@ -177,11 +201,9 @@ button {
   padding: 0px;
   margin: 0px; }
 
-.group:before,
-.group:after {
+.group:before, .group:after {
   content: "";
   display: table; }
-
 .group:after {
   clear: both; }
 
@@ -189,14 +211,12 @@ button {
   display: block;
   float: left;
   margin: 1% 0 1% 1.6%; }
+  .col:first-child {
+    margin-left: 0; }
   @media only screen and (max-width: 56.25em) {
     .col {
       margin: 1% 0 1% 0%; } }
 
-.col:first-child {
-  margin-left: 0; }
-
-/*  REMOVE MARGINS AS ALL GO FULL WIDTH AT 480 PIXELS */
 .span-1-of-12 {
   width: 6.86667%; }
   @media only screen and (max-width: 56.25em) {

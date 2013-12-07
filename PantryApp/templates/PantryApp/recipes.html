@@ -2,15 +2,10 @@
 {% load static %}
 {% block nav %}
     <ul>
-        <li>
-            <a href="{% url 'Pantry' %}">Pantry</a>
-        </li><li class="selected">
-            <a href="{% url 'Recipes' %}">Breakfast</a>
-        </li><li>
-            <a href="{% url 'Recipes' %}">Lunch</a>
-        </li><li>
-            <a href="{% url 'Recipes' %}">Dinner</a>
-        </li>
+        <li><a href="{% url 'Pantry' %}">Pantry</a>
+        <li class="selected"><a href="{% url 'Recipes' %}">Breakfast</a>
+        <li><a href="{% url 'Recipes' %}">Lunch</a>
+        <li><a href="{% url 'Recipes' %}">Dinner</a>
     </ul>
 {% endblock %}
 {% block title %}Get the Fork'n Pantry{% endblock %}
