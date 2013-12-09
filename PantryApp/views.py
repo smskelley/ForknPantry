@@ -26,6 +26,7 @@ class Register(View):
 			session_id = random.randint(1,9999999)
 			person = User.objects.create(email=userName,password_hash=userPass,session_id=session_id)
 			person.save()
+			request.session['session_id'] = person.session_id
 			return redirect('Pantry')
 
 class Login(View):
@@ -41,12 +42,12 @@ class Login(View):
 		if (persons.password_hash == userPassComp):
 			persons.session_id = random.randint(1,9999999)
 			persons.save()
+			request.session['session_id'] = persons.session_id
        			return redirect('Pantry')
 		else:
                 	return render(request, 'PantryApp/login.html', {'email': userName})
 	else:
 		return render(request, 'PantryApp/login.html', {'email': userName})
-	#return HttpResponse(persons)
 
 class Pantry(View):
     def get(self, request):
