@@ -6,6 +6,15 @@ from django.contrib.auth.hashers import make_password
 from PantryApp.models import *
 import random
 
+def login(fn):
+	def wrapper(self,request):
+		comp = request.session.get('session_id')
+		if (comp):
+			return fn(self,request)
+		else:
+			return redirect('Login')
+	return wrapper
+
 # Register View
 class Register(View):
     def get(self, request):
@@ -50,21 +59,22 @@ class Login(View):
 		return render(request, 'PantryApp/login.html', {'email': userName})
 
 class Pantry(View):
-    def get(self, request):
+	@login
+	def get(self, request):
         # Rendering example data
-        return render(request, 'PantryApp/pantry.html',
-                {"ingredients": [
-                    {'id': 1, 'ingredient': 'Milk', 'user_has': True },
-                    {'id': 2, 'ingredient': 'Eggs', 'user_has': False },
-                    {'id': 3, 'ingredient': 'Cheese', 'user_has': True },
+        	return render(request, 'PantryApp/pantry.html',
+                	{"ingredients": [
+                    		{'id': 1, 'ingredient': 'Milk', 'user_has': True },
+                    		{'id': 2, 'ingredient': 'Eggs', 'user_has': False },
+                    		{'id': 3, 'ingredient': 'Cheese', 'user_has': True },
                 ]})
-    def post(self, request):
+    	def post(self, request):
         # Rendering example data
-        return render(request, 'PantryApp/pantry.html',
-                {"ingredients": [
-                    {'id': 1, 'ingredient': 'Milk', 'user_has': False },
-                    {'id': 2, 'ingredient': 'Eggs', 'user_has': True },
-                    {'id': 3, 'ingredient': 'Cheese', 'user_has': False },
+        	return render(request, 'PantryApp/pantry.html',
+                	{"ingredients": [
+                    		{'id': 1, 'ingredient': 'Milk', 'user_has': False },
+                    		{'id': 2, 'ingredient': 'Eggs', 'user_has': True },
+                    		{'id': 3, 'ingredient': 'Cheese', 'user_has': False },
                 ]})
 
 class Recipes(View):
