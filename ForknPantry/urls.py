@@ -5,7 +5,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
-    url(r'^login/$', Login.as_view(), name='Login'),
+    url(r'^login/$', LoginUser.as_view(), name='Login'),
     url(r'^register/$', Register.as_view(), name='Register'),
     url(r'^pantry/$', Pantry.as_view(), name='Pantry'),
     # recipes url will need to be updated to accept a type.

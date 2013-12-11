@@ -4,7 +4,7 @@ from django.shortcuts import redirect
 from django.views.generic.base import View
 from django.contrib.auth.models import User
 from django.contrib import auth
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate,login
 from django.contrib.sessions.models import Session
 from django.contrib.sessions.backends.db import SessionStore
 from django.contrib.auth.hashers import make_password
@@ -35,14 +35,17 @@ class Register(View):
 		if (userPass1 != userPass2):
 			return render(request, 'PantryApp/register.html', {'username': userName})
 		else:
+			userPantry = UserPantry
 			session_id = random.randint(1,9999999)
 			person = User.objects.create_user(userName,userName,userPass1)
 			person.is_active = True
 			person.save()
+			userPantry.user = person
+			userPantry.save()
 			request.session['user_id'] = person.id
 			return redirect('Pantry')
 
-class Login(View):
+class LoginUser(View):
     def get(self, request):
         return render(request, 'PantryApp/login.html')
     def post(self, request):
@@ -54,6 +57,8 @@ class Login(View):
 			if (user.check_password(userPass)):
 				#s = Session.objects.get(pk=request.session)
 				#return HttpResponse(s.session_data)
+				#user = authenticate(username=userName,password=userPass)
+				login(request,user)
 				return redirect('Pantry')
 			else:
 				return render(request, 'PantryApp/login.html', {'username': userName})
