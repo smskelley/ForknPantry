@@ -9,18 +9,18 @@
     <div class="box narrow">
         <form action="{% url 'Login' %}" method="post">
             {% csrf_token %}
-            <p>Email</p>
-            <input id="email" type="text" name="email" 
-            {% if email %}
-                value="{{email}}"
+            <p>Username</p>
+            <input id="username" type="text" name="username" 
+            {% if username %}
+                value="{{ username }}"
             {% else %}
-                placeholder="Enter your Email"
+                placeholder="Enter your Username"
             {% endif %}
             >
             <p>Password</p>
             <input id="pass" type="password" name="password" placeholder="Enter your Password">
-            {% if email %}
-                <p class="form_error">Incorrect Email/Password</p>
+            {% if Username %}
+                <p class="form_error">Incorrect Username or Password</p>
             {% endif %}
             <button id="login" type="submit">Login</button>
         </form>
