@@ -2,6 +2,10 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.shortcuts import redirect
 from django.views.generic.base import View
+from django.contrib.auth.models import User
+from django.contrib import auth
+#from django.contrib.sessions.models import Session
+from django.contrib.sessions.backends.db import SessionStore
 from django.contrib.auth.hashers import make_password
 from PantryApp.models import *
 import random
@@ -23,8 +27,7 @@ class Register(View):
         userName = request.POST["email"]
 	userPass1 = request.POST["password1"]
 	userPass2 = request.POST["password2"]
-
-	person = User.objects.filter(email=userName)
+	person = User.objects.get(user=userName)
 	if any(person):
         	return render(request, 'PantryApp/register.html', {'email': userName})
 	else:
@@ -33,10 +36,12 @@ class Register(View):
 		else:
 			userPass = make_password(userPass1,'pbkdf2_sha256')
 			session_id = random.randint(1,9999999)
-			person = User.objects.create(email=userName,password_hash=userPass,session_id=session_id)
+			person = User.objects.create_user(userName,userName,userPass)
 			person.save()
 			request.session['user_id'] = person.id
-			return redirect('Pantry')
+			request.session.append(session_id)
+			#return redirect('Pantry')
+			return HttpResponse(request.session)
 
 class Login(View):
     def get(self, request):
@@ -46,10 +51,10 @@ class Login(View):
 	userPass = request.POST["password"]
 	persons = User.objects.filter(email=userName)
 	if any(persons):
-		persons = User.objects.get(email=userName)
+		persons = User.objects.get(email__exact=userName)
 		userPassComp = make_password(userPass,'pbkdf2_sha256')
-		if (persons.password_hash == userPassComp):
-			persons.session_id = random.randint(1,9999999)
+		if (persons.password == userPassComp):
+			session_id = random.randint(1,9999999)
 			persons.save()
 			request.session['user_id'] = persons.id
        			return redirect('Pantry')
