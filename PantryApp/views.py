@@ -57,6 +57,7 @@ class LoginUser(View):
 			if (user.check_password(userPass)):
 				#s = Session.objects.get(pk=request.session)
 				#return HttpResponse(s.session_data)
+				#user = authenticate(username=userName,password=userPass)
 				login(request,user)
 				return redirect('Pantry')
 			else:
