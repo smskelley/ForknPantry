@@ -16,7 +16,7 @@ class UserPantryInline(admin.StackedInline):
 
 #Define a new User admin
 class UserAdmin(UserAdmin):
-	inlines = (UserAdminInline,)
+	inlines = (UserPantryInline,)
 
 #Re-Register UserAdmin
 admin.site.unregister(User)
