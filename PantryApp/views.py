@@ -86,8 +86,12 @@ class Recipes(View):
                  "recipes": [
                     {'id': 1, 'name': 'Chili', 'link': 'www.food.com', 
                         'photo_exists': False },
-                    {'id': 2, 'name': 'Chili', 'link': 'www.food.com', 
+                    {'id': 2, 'name': 'Scrambled Eggs', 'link': 'www.food.com', 
+                        'photo_exists': True },
+                    {'id': 3, 'name': 'Grilled Cheese', 'link': 'www.food.com', 
+                        'photo_exists': True },
+                    {'id': 4, 'name': 'Chili', 'link': 'www.food.com', 
                         'photo_exists': False },
-                    {'id': 3, 'name': 'Chili', 'link': 'www.food.com', 
+                    {'id': 5, 'name': 'Chili', 'link': 'www.food.com', 
                         'photo_exists': False },
                 ]})
