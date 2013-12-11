@@ -11,14 +11,6 @@ from django.contrib.auth.hashers import make_password
 from PantryApp.models import *
 import random
 
-def login(fn):
-	def wrapper(self,request):
-		comp = 1
-		if (comp):
-			return fn(self,request)
-		else:
-			return redirect('Login')
-	return wrapper
 
 # Register View
 class Register(View):
@@ -35,14 +27,12 @@ class Register(View):
 		if (userPass1 != userPass2):
 			return render(request, 'PantryApp/register.html', {'username': userName})
 		else:
-			userPantry = UserPantry
-			session_id = random.randint(1,9999999)
+			userPantry = UserPantry()
 			person = User.objects.create_user(userName,userName,userPass1)
 			person.is_active = True
 			person.save()
 			userPantry.user = person
 			userPantry.save()
-			request.session['user_id'] = person.id
 			return redirect('Pantry')
 
 class LoginUser(View):
@@ -51,17 +41,15 @@ class LoginUser(View):
     def post(self, request):
 	userName = request.POST["username"]
 	userPass = request.POST["password"]
-	user = User.objects.get(username__exact=userName)
+	#user = User.objects.get(username__exact=userName)
+	user = authenticate(username=userName,password=userPass)
     	if user is not None:
         	if user.is_active:
-			if (user.check_password(userPass)):
-				#s = Session.objects.get(pk=request.session)
-				#return HttpResponse(s.session_data)
-				#user = authenticate(username=userName,password=userPass)
-				login(request,user)
-				return redirect('Pantry')
-			else:
-				return render(request, 'PantryApp/login.html', {'username': userName})
+			#if (user.check_password(userPass)):
+			login(request,user)
+			return redirect('Pantry')
+			#else:
+			#	return render(request, 'PantryApp/login.html', {'username': userName})
 		else:
 			return render(request, 'PantryApp/login.html', {'username': userName})
 	else:
@@ -71,7 +59,7 @@ class Pantry(View):
     def get(self, request):
 
 	ingredients = Ingredient.objects.all()
-	user_ingredients = User.objects.get(email='seanlaue@gmail.com').ingredients.all()
+	user_ingredients = User.objects.get(id=request.user.id).userpantry.ingredients.all()
 	row = {}
 	final_list = []
 	for ingredient in ingredients:
