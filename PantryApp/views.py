@@ -50,13 +50,21 @@ class Login(View):
 
 class Pantry(View):
     def get(self, request):
+
+	ingredients = Ingredient.objects.all()
+	user_ingredients = User.objects.get(email='seanlaue@gmail.com').ingredients.all()
+	row = {}
+	final_list = []
+	for ingredient in ingredients:
+		row['id'] = ingredient.id
+		row['ingredient'] = ingredient.name
+		row['user_has'] =  ingredient in user_ingredients
+		final_list.append(row.copy())
+		print (row['ingredient'])
+	print len(final_list)	
         # Rendering example data
-        return render(request, 'PantryApp/pantry.html',
-                {"ingredients": [
-                    {'id': 1, 'ingredient': 'Milk', 'user_has': True },
-                    {'id': 2, 'ingredient': 'Eggs', 'user_has': False },
-                    {'id': 3, 'ingredient': 'Cheese', 'user_has': True },
-                ]})
+        return render(request, 'PantryApp/pantry.html', {"ingredients" : final_list})
+    
     def post(self, request):
         # Rendering example data
         return render(request, 'PantryApp/pantry.html',
