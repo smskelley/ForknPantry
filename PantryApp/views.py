@@ -5,12 +5,14 @@ from django.views.generic.base import View
 from django.contrib.auth.models import User
 from django.contrib import auth
 from django.contrib.auth import authenticate,login
-from django.contrib.sessions.models import Session
-from django.contrib.sessions.backends.db import SessionStore
-from django.contrib.auth.hashers import make_password
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 from PantryApp.models import *
-import random
 
+# Home View
+class Home(View):
+	def get(self,request):
+		
 
 # Register View
 class Register(View):
@@ -41,21 +43,18 @@ class LoginUser(View):
     def post(self, request):
 	userName = request.POST["username"]
 	userPass = request.POST["password"]
-	#user = User.objects.get(username__exact=userName)
 	user = authenticate(username=userName,password=userPass)
     	if user is not None:
         	if user.is_active:
-			#if (user.check_password(userPass)):
 			login(request,user)
 			return redirect('Pantry')
-			#else:
-			#	return render(request, 'PantryApp/login.html', {'username': userName})
 		else:
 			return render(request, 'PantryApp/login.html', {'username': userName})
 	else:
 		return render(request, 'PantryApp/login.html', {'username': userName})
 
 class Pantry(View):
+    @method_decorator(login_required)
     def get(self, request):
 
 	ingredients = Ingredient.objects.all()
