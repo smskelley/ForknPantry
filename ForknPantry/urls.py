@@ -5,6 +5,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
+    url(r'^$', Home.as_view(), name='Home'),
     url(r'^login/$', LoginUser.as_view(), name='Login'),
     url(r'^register/$', Register.as_view(), name='Register'),
     url(r'^pantry/$', Pantry.as_view(), name='Pantry'),
