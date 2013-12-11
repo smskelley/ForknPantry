@@ -17,7 +17,7 @@ class Home(View):
 			if user_ingredients is None:
 				return redirect('Pantry')
 			else:
-				return redirect('Recipe','lunch')
+				return redirect('Recipes',category='lunch')
 		else:
 			return redirect('Login')
 
