@@ -14,7 +14,7 @@ class Category(models.Model):
             return self.name
 
 # UserPantry Model
-class User(models.Model):
+class UserPantry(models.Model):
 	user = models.OneToOneField(User)
 	ingredients = models.ManyToManyField(Ingredient)
         def __unicode__(self):
