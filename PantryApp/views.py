@@ -4,7 +4,8 @@ from django.shortcuts import redirect
 from django.views.generic.base import View
 from django.contrib.auth.models import User
 from django.contrib import auth
-#from django.contrib.sessions.models import Session
+from django.contrib.auth import authenticate
+from django.contrib.sessions.models import Session
 from django.contrib.sessions.backends.db import SessionStore
 from django.contrib.auth.hashers import make_password
 from PantryApp.models import *
@@ -24,45 +25,42 @@ class Register(View):
     def get(self, request):
         return render(request, 'PantryApp/register.html')
     def post(self, request):
-        userName = request.POST["email"]
+        userName = request.POST["username"]
 	userPass1 = request.POST["password1"]
 	userPass2 = request.POST["password2"]
-	person = User.objects.get(user=userName)
+	person = User.objects.filter(username=userName)
 	if any(person):
-        	return render(request, 'PantryApp/register.html', {'email': userName})
+        	return render(request, 'PantryApp/register.html', {'username': userName})
 	else:
 		if (userPass1 != userPass2):
-			return render(request, 'PantryApp/register.html', {'email': userName})
+			return render(request, 'PantryApp/register.html', {'username': userName})
 		else:
-			userPass = make_password(userPass1,'pbkdf2_sha256')
 			session_id = random.randint(1,9999999)
-			person = User.objects.create_user(userName,userName,userPass)
+			person = User.objects.create_user(userName,userName,userPass1)
+			person.is_active = True
 			person.save()
 			request.session['user_id'] = person.id
-			request.session.append(session_id)
-			#return redirect('Pantry')
-			return HttpResponse(request.session)
+			return redirect('Pantry')
 
 class Login(View):
     def get(self, request):
         return render(request, 'PantryApp/login.html')
     def post(self, request):
-	userName = request.POST["email"]
+	userName = request.POST["username"]
 	userPass = request.POST["password"]
-	persons = User.objects.filter(email=userName)
-	if any(persons):
-		persons = User.objects.get(email__exact=userName)
-		userPassComp = make_password(userPass,'pbkdf2_sha256')
-		if (persons.password == userPassComp):
-			session_id = random.randint(1,9999999)
-			persons.save()
-			request.session['user_id'] = persons.id
-       			return redirect('Pantry')
-			#return HttpResponse(persons.id)
+	user = User.objects.get(username__exact=userName)
+    	if user is not None:
+        	if user.is_active:
+			if (user.check_password(userPass)):
+				s = Session.objects.get(pk=request.session)
+				return HttpResponse(s.session_data)
+				#return render('Pantry')
+			else:
+				return render(request, 'PantryApp/login.html', {'username': userName})
 		else:
-                	return render(request, 'PantryApp/login.html', {'email': userName})
+			return render(request, 'PantryApp/login.html', {'username': userName})
 	else:
-		return render(request, 'PantryApp/login.html', {'email': userName})
+		return render(request, 'PantryApp/login.html', {'username': userName})
 
 class Pantry(View):
 	@login
