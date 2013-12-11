@@ -10,9 +10,16 @@ from django.utils.decorators import method_decorator
 from PantryApp.models import *
 
 # Home View
-#class Home(View):
-#	def get(self,request):
-				
+class Home(View):
+	def get(self,request):
+		if request.user.is_authenticated():
+			user_ingredients = User.objects.get(id=request.user.id).userpantry.ingredients.count()
+			if user_ingredients is None:
+				return redirect('Pantry')
+			else:
+				return redirect('Recipe','lunch')
+		else:
+			return redirect('Login')
 
 # Register View
 class Register(View):
@@ -23,18 +30,19 @@ class Register(View):
 		userPass1 = request.POST["password1"]
 		userPass2 = request.POST["password2"]
 		person = User.objects.filter(username=userName)
-		if any(person):
+		if person is None:
 			return render(request, 'PantryApp/register.html', {'username': userName})
 		else:
 			if (userPass1 != userPass2):
 				return render(request, 'PantryApp/register.html', {'username': userName})
 			else:
-				userPantry = UserPantry()
 				person = User.objects.create_user(userName,userName,userPass1)
 				person.is_active = True
 				person.save()
-				userPantry.user = person
+				userPantry = UserPantry(user=person)
 				userPantry.save()
+				user = authenticate(username=userName,password=userPass1)
+				login(request,user)
 				return redirect('Pantry')
 
 class LoginUser(View):
