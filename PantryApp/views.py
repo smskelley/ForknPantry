@@ -10,32 +10,32 @@ from django.utils.decorators import method_decorator
 from PantryApp.models import *
 
 # Home View
-class Home(View):
-	def get(self,request):
-		
+#class Home(View):
+#	def get(self,request):
+				
 
 # Register View
 class Register(View):
-    def get(self, request):
-        return render(request, 'PantryApp/register.html')
-    def post(self, request):
-        userName = request.POST["username"]
-	userPass1 = request.POST["password1"]
-	userPass2 = request.POST["password2"]
-	person = User.objects.filter(username=userName)
-	if any(person):
-        	return render(request, 'PantryApp/register.html', {'username': userName})
-	else:
-		if (userPass1 != userPass2):
+	def get(self, request):
+		return render(request, 'PantryApp/register.html')
+	def post(self, request):
+		userName = request.POST["username"]
+		userPass1 = request.POST["password1"]
+		userPass2 = request.POST["password2"]
+		person = User.objects.filter(username=userName)
+		if any(person):
 			return render(request, 'PantryApp/register.html', {'username': userName})
 		else:
-			userPantry = UserPantry()
-			person = User.objects.create_user(userName,userName,userPass1)
-			person.is_active = True
-			person.save()
-			userPantry.user = person
-			userPantry.save()
-			return redirect('Pantry')
+			if (userPass1 != userPass2):
+				return render(request, 'PantryApp/register.html', {'username': userName})
+			else:
+				userPantry = UserPantry()
+				person = User.objects.create_user(userName,userName,userPass1)
+				person.is_active = True
+				person.save()
+				userPantry.user = person
+				userPantry.save()
+				return redirect('Pantry')
 
 class LoginUser(View):
     def get(self, request):
