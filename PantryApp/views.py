@@ -13,7 +13,7 @@ import random
 
 def login(fn):
 	def wrapper(self,request):
-		comp = request.session.get('session_id')
+		comp = 1
 		if (comp):
 			return fn(self,request)
 		else:
@@ -52,9 +52,9 @@ class Login(View):
     	if user is not None:
         	if user.is_active:
 			if (user.check_password(userPass)):
-				s = Session.objects.get(pk=request.session)
-				return HttpResponse(s.session_data)
-				#return render('Pantry')
+				#s = Session.objects.get(pk=request.session)
+				#return HttpResponse(s.session_data)
+				return redirect('Pantry')
 			else:
 				return render(request, 'PantryApp/login.html', {'username': userName})
 		else:
