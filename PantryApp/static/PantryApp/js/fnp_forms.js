@@ -16,6 +16,11 @@ $(document).ready(function(){
     $('#login').click(function(event){
         // clean the slate each time
         $('.form_error').remove();
+
+        if ($('#username').val().length < 3) {
+            event.preventDefault();
+            addFormErrorMsg("Username is too short", '#username');
+        }
         
         if ($('#pass').val().length < minPassLen) {
             // notify user the passwords don't match, prevent from posting
@@ -38,6 +43,10 @@ $(document).ready(function(){
             // notify user the passwords don't match and prevent from posting
             event.preventDefault();
             addFormErrorMsg(error, '#pass2');
+        }
+        if ($('#username').val().length < 3) {
+            event.preventDefault();
+            addFormErrorMsg("Username is too short", '#username');
         }
         if (!$('.form_error').length) {
             // if we've gotten this far and there's no error messages, the form
