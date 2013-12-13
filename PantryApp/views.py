@@ -15,7 +15,7 @@ class Home(View):
     def get(self,request):
         if request.user.is_authenticated():
             number_of_ingredients = User.objects.get(id=request.user.id). \
-                    userpantry.ingredients.count()
+                                    userpantry.ingredients.count()
             if number_of_ingredients == 0:
                 return redirect('Pantry')
             else:
@@ -28,43 +28,36 @@ class Register(View):
     def get(self, request):
         return render(request, 'PantryApp/register.html')
     def post(self, request):
-        userName = request.POST["username"]
-        userPass1 = request.POST["password1"]
-        userPass2 = request.POST["password2"]
-        person = User.objects.filter(username=userName)
-        if person is None:
+        username = request.POST["username"]
+        password1 = request.POST["password1"]
+        password2 = request.POST["password2"]
+        if (User.objects.filter(username=username).exists() or
+                password1 != password2):
             return render(request, 'PantryApp/register.html', 
-                          {'username': userName})
-        else:
-            if (userPass1 != userPass2):
-                return render(request, 'PantryApp/register.html', 
-                              {'username': userName})
-            else:
-                person = User.objects.create_user(userName,userName,userPass1)
-                person.is_active = True
-                person.save()
-                userPantry = UserPantry(user=person)
-                userPantry.save()
-                user = authenticate(username=userName,password=userPass1)
-                login(request,user)
-                return redirect('Pantry')
+                          {'username': username})
+
+        person = User.objects.create_user(username=username,
+                                          password=password1)
+        person.save()
+        pantry = UserPantry(user=person)
+        pantry.save()
+        user = authenticate(username=username,password=password1)
+        login(request,user)
+        return redirect('Pantry')
 
 
 class LoginUser(View):
     def get(self, request):
         return render(request, 'PantryApp/login.html')
     def post(self, request):
-        userName = request.POST["username"]
-        userPass = request.POST["password"]
-        user = authenticate(username=userName,password=userPass)
-        if user is not None:
-            if user.is_active:
-                login(request,user)
-                return redirect('Pantry')
-            else:
-                return render(request, 'PantryApp/login.html', 
-                              {'username': userName})
-        return render(request, 'PantryApp/login.html', {'username': userName})
+        username = request.POST["username"]
+        password = request.POST["password"]
+        user = authenticate(username=username,password=password)
+        if user is not None and user.is_active:
+            login(request,user)
+            return redirect('Pantry')
+
+        return render(request, 'PantryApp/login.html', {'username': username})
 
 
 class Pantry(View):
@@ -72,13 +65,13 @@ class Pantry(View):
     def get(self, request):
         ingredients = Ingredient.objects.all()
         user_ingredients = User.objects.get(id=request.user.id). \
-                userpantry.ingredients.all()
+                           userpantry.ingredients.all()
         row = {}
         final_list = []
         for ingredient in ingredients:
             row['id'] = ingredient.id
             row['ingredient'] = ingredient.name
-            row['user_has'] =  ingredient in user_ingredients
+            row['user_has'] = ingredient in user_ingredients
             final_list.append(row.copy())
         return render(request, 'PantryApp/pantry.html',
                       {"ingredients" : final_list})
