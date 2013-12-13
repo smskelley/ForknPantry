@@ -10,13 +10,13 @@ admin.site.register(Recipe)
 
 #needed to make UserPantry play nicely with the built in User model
 class UserPantryInline(admin.StackedInline):
-	model = UserPantry
-	can_delete = False
-	verbose_name_plural = 'UserPantry'
+    model = UserPantry
+    can_delete = False
+    verbose_name_plural = 'UserPantry'
 
 #Define a new User admin
 class UserAdmin(UserAdmin):
-	inlines = (UserPantryInline,)
+    inlines = (UserPantryInline,)
 
 #Re-Register UserAdmin
 admin.site.unregister(User)
