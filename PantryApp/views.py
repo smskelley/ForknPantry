@@ -76,15 +76,24 @@ class Pantry(View):
         return render(request, 'PantryApp/pantry.html',
                       {"ingredients" : final_list})
     
+    @method_decorator(login_required)
     def post(self, request):
-        # Rendering example data
-        return render(request, 'PantryApp/pantry.html',
-                {"ingredients": [
-                    {'id': 1, 'ingredient': 'Milk', 'user_has': False },
-                    {'id': 2, 'ingredient': 'Eggs', 'user_has': True },
-                    {'id': 3, 'ingredient': 'Cheese', 'user_has': False },
-                ]})
+        # Update the user's ingredients based on POST data.
+        # First check if current ingredients should remain ingredients and
+        # then check if there are any new ingredients to add. This is likely
+        # inefficient. If speed becomes an issue, fix this.
+        pantry = User.objects.get(id=request.user.id).userpantry
+        for ingredient in pantry.ingredients.all():
+            if str(ingredient.id) not in request.POST:
+                pantry.ingredients.remove(ingredient)
+        for k in request.POST.keys():
+            if k.isdigit():
+                pantry.ingredients.add(
+                        Ingredient.objects.get(id=int(k)))
 
+        # For now, simply use get to display the information.
+        # Surely inefficient, but functions fine in small scale.
+        return self.get(request)
 
 class Recipes(View):
     def get(self, request, category):
