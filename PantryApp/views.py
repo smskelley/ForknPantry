@@ -97,14 +97,24 @@ class Pantry(View):
 
 class Recipes(View):
     def get(self, request, category):
-        # Rendering example data
+        # This is an inefficient solution. It could certainly be enhanced.
+        user_ingredients = set(User.objects.get(id=request.user.id). \
+                           userpantry.ingredients.all())
+        recipes = []
+        # Go through all recipes in this category, compare recipe ingredients
+        # against user ingredients. If the intersection between these sets is
+        # the same length as the number of ingredients in the recipe, then
+        # the user has all ingredients.
+        for recipe in Recipe.objects.filter(
+                category=Category.objects.get(name=category)):
+            if (len(set(recipe.ingredients.all()) & user_ingredients) ==
+                    recipe.ingredients.count()):
+                row = { 'id': recipe.id,
+                        'name': recipe.name,
+                        'link': recipe.link,
+                        'photo_exists': recipe.photo_exists, }
+                recipes.append(row.copy())
+
         return render(request, 'PantryApp/recipes.html',
                 {"category": category,
-                 "recipes": [
-                    {'id': 1, 'name': 'Chili', 'link': 'www.food.com', 
-                        'photo_exists': False },
-                    {'id': 2, 'name': 'Chili', 'link': 'www.food.com', 
-                        'photo_exists': False },
-                    {'id': 3, 'name': 'Chili', 'link': 'www.food.com', 
-                        'photo_exists': False },
-                ]})
+                 "recipes": recipes })
