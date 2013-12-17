@@ -96,6 +96,7 @@ class Pantry(View):
         return self.get(request)
 
 class Recipes(View):
+    @method_decorator(login_required)
     def get(self, request, category):
         # This is an inefficient solution. It could certainly be enhanced.
         user_ingredients = set(User.objects.get(id=request.user.id). \
